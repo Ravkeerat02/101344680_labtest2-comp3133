@@ -8,9 +8,8 @@ import { MissionService } from '../shared/mission.service';
   styleUrls: ['./missiondetails.component.css']
 })
 export class MissiondetailComponent implements OnInit {
-  // @Input() mission: Mission;
+  
   launch: any;
-  mission: any;
   flight_number: number | undefined;
   constructor(private route: ActivatedRoute, private apiService: MissionService) { }
 

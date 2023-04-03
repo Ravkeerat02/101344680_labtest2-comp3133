@@ -15,6 +15,14 @@ export class MissionService {
     return this.http.get<Mission[]>(this.apiUrl);
   }
 
+  getMissioById(id: number): Observable<Mission> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Mission>(url);
+  }
+  //missiondetails by using flight number
+  
+
+
   getMission(flightNumber: string): Observable<Mission> {
     const url = `${this.apiUrl}/${flightNumber}`;
     return this.http.get<Mission>(url);
