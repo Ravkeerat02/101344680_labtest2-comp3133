@@ -17,51 +17,103 @@ interface Launch {
     </div>
     <ul class="mission-list">
       <li *ngFor="let launch of filteredLaunches">
-        <div class="mission-info">
-          <img [src]="launch.mission_patch_small" alt="{{ launch.mission_name }} logo">
-          <div class="details">
-            <h3>{{ launch.mission_name }}</h3>
-            <p><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
-            <p>{{ launch.details }}</p>
-          </div>
-        </div>
+      <div class="mission-info">
+      <img *ngIf="launch.mission_patch_small" [src]="launch.mission_patch_small" alt="{{ launch.mission_name }} logo">
+      <div class="details">
+        <h3>{{ launch.mission_name }}</h3>
+        <p><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
+        <p>{{ launch.details }}</p>
+      </div>
+    </div>
       </li>
     </ul>
   `,
   styles: [`
-    .filters {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px 0;
-    }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
 
-    .mission-list {
-      list-style: none;
-      padding: 0;
-    }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
 
-    .mission-info {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      padding: 20px;
-    }
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+  }
 
-    .mission-info img {
-      height: 100px;
-      margin-right: 20px;
-    }
+  .filters {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
 
-    .details h3 {
-      margin: 0 0 10px 0;
-    }
+  label {
+    margin-right: 10px;
+  }
 
-    .details p {
-      margin: 0;
-    }
-  `]
+  input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+  }
+
+  .mission-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .mission-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .mission-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+  }
+
+  .image-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .details h3 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .details p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+`]
 })
 export class MissionListComponent implements OnInit {
   launches: Launch[] | undefined;
