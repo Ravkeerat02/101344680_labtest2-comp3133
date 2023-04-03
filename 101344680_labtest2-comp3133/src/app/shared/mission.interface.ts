@@ -6,6 +6,9 @@ export interface Mission {
     links:{
         mission_patch_small: string;
         mission_patch: string;
+        article_link: string;
     }
   }
+
+
   

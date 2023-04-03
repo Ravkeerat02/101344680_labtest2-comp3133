@@ -24,4 +24,8 @@ export class MissionService {
     const url = `${this.apiUrl}?launch_year=${year}`;
     return this.http.get<Mission[]>(url);
   }
+  getLaunchByFlightNumber(flightNumber: string): Observable<Mission> {
+    const url = `${this.apiUrl}/${flightNumber}`;
+    return this.http.get<Mission>(url);
+  }
 }

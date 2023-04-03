@@ -16,29 +16,31 @@ interface Launch {
   selector: 'app-mission-list',
 
   template: `
-    <div class="container">
-      <div class="header">
-        <h1>Mission List</h1>
-        <div class="filters">
-          <label for="year-input">Filter by Year:</label>
-          <input type="number" id="year-input" [(ngModel)]="yearFilter" (input)="filterLaunches()">
+  <div class="container">
+  <div class="header">
+    <h1>Mission List</h1>
+    <div class="filters">
+      <label for="year-input">Filter by Year:</label>
+      <input type="number" id="year-input" [(ngModel)]="yearFilter" (input)="filterLaunches()">
+    </div>
+  </div>
+  <ul class="mission-list">
+    <li *ngFor="let launch of filteredLaunches">
+      <div class="mission-info">
+        <div class="image-container">
+          <img *ngIf="launch.links.mission_patch_small" [src]="launch.links.mission_patch_small" alt="{{ launch.mission_name }} logo">
+        </div>
+        <div class="details">
+          <h3>{{ launch.mission_name }}</h3>
+          <p><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
+          <p>{{ launch.details }}</p>
+          <button routerLink="/mission/{{launch.flight_number}}">View Details</button>
         </div>
       </div>
-      <ul class="mission-list">
-        <li *ngFor="let launch of filteredLaunches">
-          <div class="mission-info">
-            <div class="image-container">
-              <img *ngIf="launch.links.mission_patch_small" [src]="launch.links.mission_patch_small" alt="{{ launch.mission_name }} logo">
-            </div>
-            <div class="details">
-              <h3>{{ launch.mission_name }}</h3>
-              <p><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
-              <p>{{ launch.details }}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+    </li>
+  </ul>
+</div>
+
   `,
   styles: [`
 
@@ -151,9 +153,9 @@ export class MissionListComponent implements OnInit {
       });
   }
 
-  selectMission(id: string) {
-    this.router.navigate(['/mission', id], { relativeTo: this.route });
-  }
+  // selectMission(id: string) {
+  //   this.router.navigate(['/mission', id], { relativeTo: this.route });
+  // }
 
   filterLaunches() {
     if (this.yearFilter) {

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MissionListComponent } from './missionlist/missionlist.component';
-import { MissionDetailsComponent } from './missiondetails/missiondetails.component';
+import { MissiondetailComponent } from './missiondetails/missiondetails.component';
 
 @NgModule({
   imports: [
@@ -14,14 +14,14 @@ import { MissionDetailsComponent } from './missiondetails/missiondetails.compone
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: MissionListComponent },
-      { path: 'mission/:flightNumber', component: MissionDetailsComponent }
+      { path: 'mission/:flightNumber', component: MissiondetailComponent }
     ]),
     
   ],
   declarations: [
     AppComponent,
     MissionListComponent,
-    MissionDetailsComponent
+    MissiondetailComponent
   ],
   bootstrap: [ AppComponent ]
 })
