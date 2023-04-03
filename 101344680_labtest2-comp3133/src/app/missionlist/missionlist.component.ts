@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Mission} from '../shared/mission.interface';
 
 interface Launch {
   mission_name: string;
@@ -139,7 +140,7 @@ export class MissionListComponent implements OnInit {
   launches: Launch[] | undefined;
   filteredLaunches: Launch[] | undefined;
   yearFilter: number | undefined;
-
+  mission: Mission[] = [] ;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -149,6 +150,10 @@ export class MissionListComponent implements OnInit {
         this.filteredLaunches = launches;
       });
   }
+
+  // selectMission(id: string) {
+  //   this.router.navigate(['/mission', id], { relativeTo: this.route });
+  // }
 
   filterLaunches() {
     if (this.yearFilter) {

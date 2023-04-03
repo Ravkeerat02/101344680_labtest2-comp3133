@@ -1,20 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { Mission } from '../shared/mission.interface';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Mission } from '../shared/mission.interface';
+
 
 @Component({
-  selector: 'app-mission-details',
+  selector: 'app-missiondetails',
   templateUrl: './missiondetails.component.html',
   styleUrls: ['./missiondetails.component.css']
 })
-export class MissionDetailsComponent {
-  @Input() mission: Mission | undefined;
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
-      if (params['flightNumber']) {
-        // Call API to get details for specified mission
-      }
-    });
+export class MissionDetailsComponent implements OnInit {
+  mission: Mission | undefined;
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+
+  ngOnInit(): void {
+    const flightNumber = this.route.snapshot.paramMap.get('flight_number');
+    const url = `https://api.spacexdata.com/v3/launches/${flightNumber}`;
+    this.http.get<Mission>(url).subscribe(mission => this.mission = mission);
   }
 }
