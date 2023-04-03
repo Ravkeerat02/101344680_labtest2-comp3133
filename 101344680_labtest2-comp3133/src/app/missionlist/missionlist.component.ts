@@ -40,90 +40,99 @@ interface Launch {
     </div>
   `,
   styles: [`
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f5f5f5;
-    }
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
+  .filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content:flex-end;
+  }
+  
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  input[type="number"] {
+    width: 100px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
 
-    h1 {
-      font-size: 32px;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .filters {
-      display: flex;
-      align-items: center;
-    }
-
-    label {
-      margin-right: 10px;
-    }
-
-    input {
-      padding: 5px;
-      border-radius: 5px;
-      border: none;
-      box-shadow: 0 2px 2px rgba(0,0,0,0.1);
-    }
-
-    .mission-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .mission-info {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 2px rgba(0,0,0,0.1);
-      transition: all 0.2s ease-in-out;
-    }
-
-    .mission-info:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-    }
-
-    .image-container {
-      width: 150px;
-      height: 150px;
-      overflow: hidden;
-      border-radius: 50%;
-      margin-right: 20px;
-      background-color: #ccc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: cover;
-    }
-
-    .details h3 {
-      margin: 0 0 10px 0;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .details p {
-      margin: 0;
-    }
+  .mission-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin-top:75px;
+  }
+  
+  .mission-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .mission-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .image-container {
+    position: absolute;
+    top: -50px;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .details {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .details h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .details p {
+    margin: 0;
+    font-size: 16px;
+    color: #666666;
+  }
   `]
 })
 export class MissionListComponent implements OnInit {
