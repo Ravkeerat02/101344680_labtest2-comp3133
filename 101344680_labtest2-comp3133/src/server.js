@@ -3,10 +3,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/spacex-missions'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/*', function(req,res) {
-    res.sendFile(path.join(__dirname + "/dist/spacex-missions/index.html"));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', '101344680_labtest2-comp3133/src/index.html'));
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(3000, () => console.log('Server started on port 3000'));
