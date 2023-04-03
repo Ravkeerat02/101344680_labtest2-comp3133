@@ -151,9 +151,9 @@ export class MissionListComponent implements OnInit {
       });
   }
 
-  // selectMission(id: string) {
-  //   this.router.navigate(['/mission', id], { relativeTo: this.route });
-  // }
+  selectMission(id: string) {
+    this.router.navigate(['/mission', id], { relativeTo: this.route });
+  }
 
   filterLaunches() {
     if (this.yearFilter) {
